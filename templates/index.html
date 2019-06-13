@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<style>
+    form{
+        display: inline-block;
+    }
+    .error{
+        color: red;
+    }
+    p{
+        margin: 0px;
+    }
+    h3{
+        margin: 0px;
+    }
+    h1{
+        margin: 15px 0px;
+    }
+</style>
+<body>
+    <form action="/register" method="POST">
+        <h1>Login and Registration</h1>
+        <h3>Register here!</h3>
+        
+        <table>
+            <div class="error">
+                {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                    {% if messages %}                            <!-- check if there are any messages -->
+                        {% for message in messages %}            <!-- loop through the messages -->
+                            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="form-group">    
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" name="fname" placeholder="Enter first name" class="form-control"></td>
+                </tr>
+            </div>    
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" name="lname" placeholder="Enter last name" class="form-control"> </td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="email" placeholder="Enter email" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" placeholder="Enter password" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Confirm Password:</td>
+                    <td><input type="password" name="pw_confirm" placeholder="Confirm password" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-primary">Register</button></td>
+                </tr>
+        </table>
+        </form>
+    <form action="/login" method="POST">
+        <h3>Login here!</h3>
+        <table>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" name="email" placeholder="Log in email" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="pw" placeholder="Enter password" class="form-control"></td>
+            </tr>
+            <tr>
+                <td><button class="btn btn-primary">Login</button></td>
+            </tr>
+        </table>
+    </form>    
+</body>
+</html>
